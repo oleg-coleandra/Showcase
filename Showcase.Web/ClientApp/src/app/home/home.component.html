@@ -1,0 +1,7 @@
+<p *ngIf="!this.movies"><em>Loading...</em></p>
+
+<div class="card-columns" *ngIf="this.movies">
+  <div *ngFor="let movie of this.movies" class="card">
+    <nga-movie-item [movie]="movie"></nga-movie-item>
+  </div>
+</div>

@@ -1,0 +1,142 @@
+<p *ngIf="!movie  && !errorMessage"><em>Loading...</em></p>
+
+<div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+  {{errorMessage}}
+</div>
+
+  <div *ngIf="movie && !errorMessage ">
+    <h4>{{ movie.headline }}</h4>
+
+    <mat-card>
+      <mat-card-subtitle>
+        <div class="row">
+          <div class="col-2">
+            <strong>Class:</strong> {{movie.itemClass}}
+          </div>
+          <div class="col-2">
+            <strong>Genres:</strong> {{movie.genres?.join(', ')}}
+          </div>
+          <div class="col-2">
+            <strong>Duration:</strong> {{movie.duration | secondsToHour}}
+          </div>
+          <div class="col-2">
+            <strong>Year:</strong> {{movie.year}}
+          </div>
+          <div class="col-2">
+            <strong>Certificate:</strong> <strong>{{movie.cert}}</strong>
+          </div>
+          <div class="col-2">
+            <div class="ratings text-right">
+              <nga-stars [rating]="movie.rating"></nga-stars>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <strong>Directors:</strong> {{movie.directors | names}}
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-12">
+            <strong>Cast:</strong> {{movie.cast | names}}
+          </div>
+        </div>
+      </mat-card-subtitle>
+    </mat-card>
+
+    <mat-card *ngIf="movie.cardImages">
+      <mat-card-title>Card images</mat-card-title>
+      <mat-card-content>
+        <ng-image-slider [images]="cardImageObject" #nav></ng-image-slider>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="movie.synopsis">
+      <mat-card-title>Synopsis</mat-card-title>
+      <mat-card-content>
+        <p>{{movie.synopsis}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-title>Review</mat-card-title>
+      <mat-card-content>
+        <p class="text-right"><em>"{{movie.quote}}"</em></p>
+        <p>{{movie.body}}</p>
+        <mat-card-subtitle class="text-right">{{movie.reviewAuthor}}</mat-card-subtitle>
+        <a [href]="movie.url" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go to full review</a>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="movie.galleries">
+      <mat-card-title>Galleries</mat-card-title>
+      <mat-card-content>
+        <div *ngFor="let gallery of movie.galleries">
+          <h4>{{gallery.title}}</h4>
+          <a [href]="gallery.url">
+            <img src="{{gallery.thumbnailUrl}}">
+          </a>
+          <small class="text-muted">{{gallery.id}}</small>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="movie.keyArtImages">
+      <mat-card-title>Key Art Images</mat-card-title>
+      <mat-card-content>
+        <ng-image-slider [images]="keyArtImageObject" #nav></ng-image-slider>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="movie.videos">
+      <mat-card-title>Videos</mat-card-title>
+      <mat-card-content>
+        <div *ngFor="let videoObject of videosObject">
+          <ng-image-slider [images]="videoObject" #nav></ng-image-slider>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card *ngIf="movie.skyGoId || movie.skyGoUrl || movie.sgid || movie.sgUrl || movie.viewingWindow">
+      <mat-card-title>Watch</mat-card-title>
+      <mat-card-content>
+        <div class="container">
+          <div class="row" *ngIf="movie.viewingWindow">
+            <div class="col-12">
+              <h5>
+                <small class="text-muted">Avaiable on {{movie.viewingWindow.wayToWatch}} {{movie.viewingWindow.title}} from</small>
+                {{movie.viewingWindow.startDate | date : locale}} <small class="text-muted">to </small> {{movie.viewingWindow.endDate | date : locale}}
+              </h5>
+            </div>
+          </div>
+          <div class="row" *ngIf="movie.skyGoId || movie.skyGoUrl">
+            <div class="col-12" *ngIf="movie.skyGoId">
+              <h5><small class="text-muted">Sky Go Id: </small>{{movie.skyGoId}}</h5>
+            </div>
+            <a *ngIf="movie.skyGoUrl" [href]="movie.skyGoUrl" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go to Sky Go</a>
+          </div>
+          <div class="row" *ngIf="movie.sgid || movie.sgUrl">
+            <div class="col-12" *ngIf="movie.sgid">
+              <h5><small class="text-muted">Sky Go Id: </small>{{movie.sgid}}</h5>
+            </div>
+            <a *ngIf="movie.sgUrl" [href]="movie.sgUrl" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Go to Sky Go</a>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <mat-accordion>
+      <mat-expansion-panel hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <h4>Details</h4>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <h5><small class="text-muted">Movie Id: </small>{{movie.id}}</h5>
+        <h5 *ngIf="movie.sum"><small class="text-muted">Movie Sum: </small>{{movie.sum}}</h5>
+        <h5 *ngIf="movie.lastUpdated"><small class="text-muted">Last updated: </small>{{movie.lastUpdated}}</h5>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+  </div>
+

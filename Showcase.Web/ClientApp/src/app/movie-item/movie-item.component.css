@@ -1,0 +1,15 @@
+.ratings {
+  color: #e1ce00;
+}
+
+img {
+  width: 100%;
+}
+
+.mat-card {
+  background-color: #efefef;
+}
+
+.mat-card:hover {
+  background-color: #dddddd;
+}

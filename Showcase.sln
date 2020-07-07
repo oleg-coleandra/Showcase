@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30225.117
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Showcase.Web", "Showcase.Web\Showcase.Web.csproj", "{B145DADF-9705-4D1C-8095-920091EE2D3C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Showcase.Test", "Showcase.Test\Showcase.Test.csproj", "{3BE95BF4-3B98-43F2-8BA4-659EDF13B4EE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B145DADF-9705-4D1C-8095-920091EE2D3C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B145DADF-9705-4D1C-8095-920091EE2D3C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B145DADF-9705-4D1C-8095-920091EE2D3C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B145DADF-9705-4D1C-8095-920091EE2D3C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE95BF4-3B98-43F2-8BA4-659EDF13B4EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE95BF4-3B98-43F2-8BA4-659EDF13B4EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE95BF4-3B98-43F2-8BA4-659EDF13B4EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE95BF4-3B98-43F2-8BA4-659EDF13B4EE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ECF77D24-0BD3-4BC5-A455-583EF6C4DA76}
+	EndGlobalSection
+EndGlobal
